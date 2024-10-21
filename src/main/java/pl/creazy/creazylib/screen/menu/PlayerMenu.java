@@ -36,7 +36,7 @@ public interface PlayerMenu {
     var page = getPage(pageIndex, owner);
     var title = Text.color(getTitle(pageIndex, owner, page.getSize()));
     var inventory = Bukkit.createInventory(new MenuHolder(this, page, owner), page.getSize(), title);
-    page.setContent(inventory);
+    page.setContent(inventory, owner);
     owner.openInventory(inventory);
   }
 

@@ -41,7 +41,7 @@ public final class CreazyLib extends CreazyPlugin implements Listener {
     Bukkit.getPluginManager().callEvent(event);
 
     if (event.getPlugin() == null) {
-      throw new RuntimeException("CreazyLib is not fully intialized yet");
+      throw new RuntimeException("CreazyLib is not fully initialized yet");
     }
     return event.getPlugin();
   }

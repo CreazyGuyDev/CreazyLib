@@ -1,5 +1,6 @@
 package pl.creazy.creazylib.screen.menu;
 
+import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -9,14 +10,14 @@ public abstract class MenuPage implements MenuContentSetter {
   private final ItemStack[] content = new ItemStack[getSize()];
 
   @Override
-  public void setContent(@NotNull Inventory inventory) {
-    setContent();
+  public void setContent(@NotNull Inventory inventory, @NotNull Player player) {
+    setContent(player);
     inventory.setContents(content);
   }
 
   public abstract void onClick(@NotNull InventoryClickEvent event);
 
-  protected abstract void setContent();
+  protected abstract void setContent(@NotNull Player player);
 
   protected int getSize() {
     return 54;

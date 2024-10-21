@@ -60,7 +60,7 @@ public abstract class CreazyPlugin extends JavaPlugin {
     loader.loadParts(this);
   }
 
-  @Override 
+  @Override
   public final void onDisable() {
     var partManager = CreazyLib.getPlugin(CreazyLib.class).getPartManager();
     var onDisableInvoker = new OnDisableInvoker(partManager);
