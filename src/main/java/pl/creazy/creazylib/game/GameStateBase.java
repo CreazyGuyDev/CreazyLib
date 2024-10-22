@@ -2,6 +2,7 @@ package pl.creazy.creazylib.game;
 
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
+import pl.creazy.creazylib.game.constraints.GameState;
 
 public abstract class GameStateBase extends BukkitRunnable {
   private long ticks = 0L;
@@ -15,7 +16,7 @@ public abstract class GameStateBase extends BukkitRunnable {
   public abstract void handle();
 
   public long getPeriod() {
-    return 1L;
+    return getClass().getAnnotation(GameState.class).period();
   }
 
   public final void start(@NotNull GameManagerBase gameManager) {
