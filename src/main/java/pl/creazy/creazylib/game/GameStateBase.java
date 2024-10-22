@@ -3,7 +3,7 @@ package pl.creazy.creazylib.game;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class GameState extends BukkitRunnable {
+public abstract class GameStateBase extends BukkitRunnable {
   private long ticks = 0L;
 
   public void onStart() {
@@ -18,7 +18,7 @@ public abstract class GameState extends BukkitRunnable {
     return 1L;
   }
 
-  public final void start(@NotNull GameManager gameManager) {
+  public final void start(@NotNull GameManagerBase gameManager) {
     onStart();
     runTaskTimer(gameManager.getPlugin(), 0L, getPeriod());
   }

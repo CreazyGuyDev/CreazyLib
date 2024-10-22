@@ -6,14 +6,14 @@ import pl.creazy.creazylib.plugin.CreazyPlugin;
 
 import java.util.Objects;
 
-public abstract class GameManager {
-  private GameState currentGameState;
+public abstract class GameManagerBase {
+  private GameStateBase currentGameState;
 
-  public final void setGameState(@NotNull Class<? extends GameState> type) {
+  public final void setGameState(@NotNull Class<? extends GameStateBase> type) {
     if (currentGameState != null) {
       currentGameState.end();
     }
-    currentGameState = (GameState) CreazyLib.request().getPartManager().getPart(type);
+    currentGameState = (GameStateBase) CreazyLib.request().getPartManager().getPart(type);
     Objects.requireNonNull(currentGameState).start(this);
   }
 
