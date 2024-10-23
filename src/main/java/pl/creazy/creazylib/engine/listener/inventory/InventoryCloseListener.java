@@ -11,7 +11,7 @@ class InventoryCloseListener implements Listener {
   @EventHandler
   void onEvent(InventoryCloseEvent event) {
     if (event.getInventory().getHolder() instanceof MenuHolder menu) {
-      menu.menu().onClose(event);
+      menu.getMenu().onClose(event);
     }
   }
 }

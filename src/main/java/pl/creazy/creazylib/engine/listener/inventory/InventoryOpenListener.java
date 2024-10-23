@@ -11,7 +11,7 @@ class InventoryOpenListener implements Listener {
   @EventHandler
   void onEvent(InventoryOpenEvent event) {
     if (event.getInventory().getHolder() instanceof MenuHolder menu) {
-      menu.menu().onOpen(event);
+      menu.getMenu().onOpen(event);
     }
   }
 }

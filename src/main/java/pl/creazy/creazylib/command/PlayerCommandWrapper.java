@@ -55,7 +55,7 @@ public class PlayerCommandWrapper implements CommandExecutor, TabCompleter {
           try {
             var method = argsCommand.getMethod();
             var finalArgs = new ArrayList<>();
-            if (method.getParameterTypes()[0].equals(Player.class)) {
+            if (method.getParameterTypes().length > 0 && method.getParameterTypes()[0].equals(Player.class)) {
               finalArgs.add(player);
             }
             finalArgs.addAll(Arrays.asList(methodArgs));

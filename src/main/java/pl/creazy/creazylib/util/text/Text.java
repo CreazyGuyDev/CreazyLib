@@ -28,9 +28,9 @@ public class Text {
     return ChatColor.translateAlternateColorCodes('&', text);
   }
 
-  public static @NotNull String create(@NotNull String... strings) {
+  public static @NotNull String create(@NotNull Object... strings) {
     var builder = new StringBuilder();
-    for (String string : strings) {
+    for (var string : strings) {
       builder.append(string);
     }
     return builder.toString();

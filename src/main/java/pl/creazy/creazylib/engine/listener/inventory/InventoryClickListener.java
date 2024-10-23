@@ -12,7 +12,7 @@ class InventoryClickListener implements Listener {
   void onEvent(InventoryClickEvent event) {
     var inventory = event.getInventory();
     if (inventory.getHolder() instanceof MenuHolder menu) {
-      menu.page().onClick(event);
+      menu.getPage().onClick(event);
     }
   }
 }

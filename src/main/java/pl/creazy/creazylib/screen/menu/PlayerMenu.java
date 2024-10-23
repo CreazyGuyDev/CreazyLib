@@ -2,8 +2,6 @@ package pl.creazy.creazylib.screen.menu;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 import pl.creazy.creazylib.CreazyLib;
@@ -11,10 +9,11 @@ import pl.creazy.creazylib.util.text.Text;
 
 import java.util.Objects;
 
-public interface PlayerMenu {
+public interface PlayerMenu extends MenuBase {
   static boolean isMenu(@NotNull Inventory inventory) {
     return inventory.getHolder() instanceof MenuHolder;
   }
+
   static void open(@NotNull Class<? extends PlayerMenu> type, @NotNull Player player) {
     open(type, player, 0);
   }
@@ -28,23 +27,11 @@ public interface PlayerMenu {
     open(owner, 0);
   }
 
-  default @NotNull String getTitle(int pageIndex, @NotNull Player player, int size) {
-    return "Menu";
-  }
-
   default void open(@NotNull Player owner, int pageIndex) {
     var page = getPage(pageIndex, owner);
     var title = Text.color(getTitle(pageIndex, owner, page.getSize()));
-    var inventory = Bukkit.createInventory(new MenuHolder(this, page, owner), page.getSize(), title);
+    var inventory = Bukkit.createInventory(new PlayerMenuHolder(this, page, owner), page.getSize(), title);
     page.setContent(inventory, owner);
     owner.openInventory(inventory);
   }
-
-  default void onClose(@NotNull InventoryCloseEvent event) {
-  }
-
-  default void onOpen(@NotNull InventoryOpenEvent event) {
-  }
-
-  @NotNull MenuPage getPage(int pageIndex, @NotNull Player owner);
 }
