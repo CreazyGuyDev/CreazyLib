@@ -3,6 +3,7 @@ package pl.creazy.creazylib.util.mc;
 import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -18,6 +19,10 @@ import java.util.UUID;
 
 @UtilityClass
 public class Mc {
+  public static final World WORLD = Objects.requireNonNull(Bukkit.getWorld("world"));
+  public static final World NETHER = Objects.requireNonNull(Bukkit.getWorld("world_nether"));
+  public static final World END = Objects.requireNonNull(Bukkit.getWorld("world_the_end"));
+
   public static boolean addItems(@NotNull InventoryHolder holder, @NotNull ItemStack... items) {
     var inventory = holder.getInventory();
     for (ItemStack item : items) {

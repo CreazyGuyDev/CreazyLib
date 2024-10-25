@@ -9,6 +9,7 @@ import java.util.Objects;
 public abstract class GameManagerBase {
   private GameStateBase currentGameState;
 
+
   public final void setGameState(@NotNull Class<? extends GameStateBase> type) {
     if (currentGameState != null) {
       currentGameState.end();

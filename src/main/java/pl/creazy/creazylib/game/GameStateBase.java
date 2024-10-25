@@ -4,8 +4,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 import pl.creazy.creazylib.game.constraints.GameState;
 
-public abstract class GameStateBase extends BukkitRunnable {
+public abstract class GameStateBase {
   private long ticks = 0L;
+  private BukkitRunnable task;
 
   public void onStart() {
   }
@@ -21,18 +22,20 @@ public abstract class GameStateBase extends BukkitRunnable {
 
   public final void start(@NotNull GameManagerBase gameManager) {
     onStart();
-    runTaskTimer(gameManager.getPlugin(), 0L, getPeriod());
+    task = new BukkitRunnable() {
+      @Override
+      public void run() {
+        handle();
+        ticks += getPeriod();
+      }
+    };
+    task.runTaskTimer(gameManager.getPlugin(), 0L, getPeriod());
   }
 
   public final void end() {
-    cancel();
+    task.cancel();
     onEnd();
-  }
-
-  @Override
-  public final void run() {
-    handle();
-    ticks += getPeriod();
+    ticks = 0;
   }
 
   public final long getTicks() {
