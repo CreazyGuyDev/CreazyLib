@@ -11,3 +11,5 @@ commands:
     description: manage economy
   head:
     description: give heads
+  setworld:
+    description: set world

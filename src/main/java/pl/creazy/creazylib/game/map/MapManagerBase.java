@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MapManagerBase<T extends MapBase> {
-  private final List<T> maps = new ArrayList<>();
+  protected final List<T> maps = new ArrayList<>();
 
   public final @Nullable T getMap(@NotNull String name) {
     return maps.stream()

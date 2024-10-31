@@ -10,12 +10,13 @@ public abstract class MenuPage implements MenuContentSetter {
   private final ItemStack[] content = new ItemStack[getSize()];
 
   @Override
-  public void setContent(@NotNull Inventory inventory, @NotNull Player player) {
+  public final void setContent(@NotNull Inventory inventory, @NotNull Player player) {
     setContent(player);
     inventory.setContents(content);
   }
 
-  public abstract void onClick(@NotNull InventoryClickEvent event);
+  public void onClick(@NotNull InventoryClickEvent event) {
+  }
 
   protected abstract void setContent(@NotNull Player player);
 
@@ -23,7 +24,9 @@ public abstract class MenuPage implements MenuContentSetter {
     return 54;
   }
 
-  protected void setIcon(@NotNull ItemStack icon, int index) {
-    content[index] = icon;
+  protected final void setIcon(@NotNull ItemStack icon, int... indexes) {
+    for (var index : indexes) {
+      content[index] = icon;
+    }
   }
 }

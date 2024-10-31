@@ -3,7 +3,7 @@ package pl.creazy.creazylib.game.player;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class DefaultPlayerState implements PlayerState {
+public class DefaultPlayerState implements PlayerStateBase {
   @Override
   public void onStart(@NotNull Player player) {
   }

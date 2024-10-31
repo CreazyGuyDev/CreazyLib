@@ -2,6 +2,7 @@ package pl.creazy.creazylib.util.mc;
 
 import lombok.experimental.UtilityClass;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.enchantments.Enchantment;
@@ -23,9 +24,31 @@ public class Mc {
   public static final World NETHER = Objects.requireNonNull(Bukkit.getWorld("world_nether"));
   public static final World END = Objects.requireNonNull(Bukkit.getWorld("world_the_end"));
 
-  public static boolean addItems(@NotNull InventoryHolder holder, @NotNull ItemStack... items) {
+  public static void reset(@NotNull Player player) {
+    player.getInventory().clear();
+    player.setExp(0F);
+    player.setLevel(0);
+    player.setFoodLevel(20);
+    player.setHealth(player.getHealthScale());
+    player.setFireTicks(0);
+    player.setFreezeTicks(0);
+  }
+
+  public static void reset(@NotNull Player player, @NotNull GameMode gameMode) {
+    reset(player);
+    player.setGameMode(gameMode);
+  }
+
+  public static @NotNull Material getTye(@Nullable ItemStack item) {
+    return item == null ? Material.AIR : item.getType();
+  }
+
+  public static boolean addItems(@NotNull InventoryHolder holder, @Nullable ItemStack... items) {
     var inventory = holder.getInventory();
     for (ItemStack item : items) {
+      if (item == null) {
+        continue;
+      }
       if (!hasEmptySlot(holder)) {
         if (holder instanceof LivingEntity entity) {
           var world = entity.getWorld();

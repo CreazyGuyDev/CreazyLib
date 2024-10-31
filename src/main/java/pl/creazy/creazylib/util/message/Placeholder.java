@@ -24,6 +24,10 @@ public interface Placeholder {
     return create("\\$\\{TEXT\\}", text);
   }
 
+  static @NotNull Placeholder name(@NotNull String name) {
+    return create("\\$\\{NAME\\}", name);
+  }
+
   static @NotNull Placeholder location(@NotNull String location) {
     return create("\\$\\{LOCATION\\}", location);
   }
