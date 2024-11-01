@@ -1,5 +1,5 @@
 name: CreazyLib
-version: '1.4-SNAPSHOT'
+version: '2.0-SNAPSHOT'
 main: pl.creazy.creazylib.CreazyLib
 api-version: '1.21'
 authors: [Dawid Ratajczak]
