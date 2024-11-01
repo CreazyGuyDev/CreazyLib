@@ -1,6 +1,6 @@
 # Creazy Lib [Docs](https://lib.creazy.pl)
 
-# Latest version: 1.4-SNAPSHOT
+# Latest version: 2.0-SNAPSHOT
 
 # Repository:
 ### Maven
@@ -23,15 +23,16 @@ maven {
 <dependency>
   <groupId>pl.creazy</groupId>
   <artifactId>CreazyLib</artifactId>
-  <version>1.4-SNAPSHOT</version>
+  <version>2.0-SNAPSHOT</version>
 </dependency>
 ```
 ### Gradle
 ```groovy
-compileOnly "pl.creazy:CreazyLib:1.4-SNAPSHOT"
+compileOnly "pl.creazy:CreazyLib:2.0-SNAPSHOT"
 ```
 
 # Other versions:
+- 1.4-SNAPSHOT
 - 1.3-SNAPSHOT
 - 1.2-SNAPSHOT
 - 1.1-SNAPSHOT <u>NOT STABLE</u>
